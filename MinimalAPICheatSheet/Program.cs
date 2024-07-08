@@ -49,12 +49,15 @@ app.MapGet("/weatherforecast", (NameService nameService) =>
 app.MapGet("/StatusCode", (bool ok) => ok ? Results.Ok("Everything is Ok!") : Results.BadRequest("Bad Request!"));
 
 // Routing Example
-app.MapGet("/", () => "Get called");
+app.MapGet("/", () => get);
 app.MapPost("/", () => "Post called");
 app.MapPut("/", () => "Put called");
 app.MapDelete("/", () => "Delete called");
 
 app.Run();
+
+// Local Functions Example
+string get() => "Get called";
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
