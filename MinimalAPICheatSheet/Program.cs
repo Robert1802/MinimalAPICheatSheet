@@ -1,3 +1,4 @@
+using MinimalAPICheatsheet;
 using MinimalAPICheatSheet;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,10 +50,14 @@ app.MapGet("/weatherforecast", (NameService nameService) =>
 app.MapGet("/StatusCode", (bool ok) => ok ? Results.Ok("Everything is Ok!") : Results.BadRequest("Bad Request!"));
 
 // Routing Example
-app.MapGet("/", () => get);
+app.MapGet("/", get); // Using Function
 app.MapPost("/", () => "Post called");
 app.MapPut("/", () => "Put called");
 app.MapDelete("/", () => "Delete called");
+
+// Route with instantiation
+var personHandler = new PersonHandler();
+app.MapGet("/Persons", personHandler.HandleGet);
 
 app.Run();
 
