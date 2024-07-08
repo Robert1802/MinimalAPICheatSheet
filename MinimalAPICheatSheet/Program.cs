@@ -18,6 +18,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Adding Custom Middlewares Example
+app.UseHttpLogging(); // Have to set the Logging level on the appsetings.json
 app.UseHttpsRedirection();
 
 var summaries = new[]
