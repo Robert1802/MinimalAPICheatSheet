@@ -46,6 +46,8 @@ app.MapGet("/weatherforecast", (NameService nameService) =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+// ---------------------------------------------------------------------------------------------------------------------
+
 // Status Code Example
 app.MapGet("/StatusCode", (bool ok) => ok ? Results.Ok("Everything is Ok!") : Results.BadRequest("Bad Request!"));
 
@@ -55,9 +57,21 @@ app.MapPost("/", () => "Post called");
 app.MapPut("/", () => "Put called");
 app.MapDelete("/", () => "Delete called");
 
-// Route with instantiation
+// Route with instantiation Example
 var personHandler = new PersonHandler();
 app.MapGet("/Persons", personHandler.HandleGet);
+
+// Route Parameters Example
+//app.MapGet("/Persons/{id}", personHandler.HandleGetById);
+
+// Route Parameters with Contrains Example
+app.MapGet("/Persons/{id:int}", personHandler.HandleGetById);
+
+// Parameter Binding Example
+// Person Json from body to Person object automatically
+app.MapPost("Persons", (Person person) => person.FirstName +  ", " + person.LastName);
+
+// ---------------------------------------------------------------------------------------------------------------------
 
 app.Run();
 

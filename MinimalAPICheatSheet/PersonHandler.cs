@@ -7,10 +7,10 @@ public class PersonHandler
         return new Person("John", "Doe");
     }
 
-    //public Person HandleGetById(int id)
-    //{
-    //    return new Person("Maria", "Maker");
-    //}
+    public Person HandleGetById(int id)
+    {
+        return new Person("Maria", "Maker");
+    }
 }
 
 public record Person(string FirstName, string LastName);
